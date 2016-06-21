@@ -1,0 +1,58 @@
+/*signup.html and login.html*/
+#body-style
+{
+		background-color: rgba(38, 70, 76, 0.81);
+	}
+
+	.form{
+
+		width: 340px;
+    margin: auto;
+    border: 1px solid #00FF8E;
+	padding-top: 10px;
+    padding-right: 9px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+
+	}
+	.form-control{
+		text-align: center;
+	}
+	
+/*parsley css for validation for login and signup*/
+input.parsley-success,
+form.parsley-success {
+    color: #468847;
+    background-color: #F2F9F0 !important;
+    border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+form.parsley-error {
+    color: #B94A48;
+    background-color: #F9F0F0 !important;
+    border: 1px solid #f09784;
+}
+
+.parsley-errors-list {
+    list-style-type: none;
+    opacity: 0;
+    transition: all .3s ease-in;
+
+    color: #d16e6c;
+    margin-top: 5px;
+    margin-bottom: 0;
+  padding-left: 0;
+}
+
+.parsley-errors-list.filled {
+    opacity: 1;
+}
+
+/* All html file */
+
+nav{
+	width: 1301px;
+    position: relative;
+    left: 0px;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>signup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/parsley.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/signup.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+</head>
+<body id="body-style">
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+<div class="navbar-header">
+<a class="navbar-brand" href="#">welcome </a>
+</div>
+
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+        <a href="views/home.html"><span class="glyphicon glyphicon-user"></span>home</a>
+    </li>
+  </ul>
+</div>
+</nav>
+<div class="container">
+<h1><center>signup page</center></h1><br>
+<div><center>
+<form  class="form" action="signup">
+		 <div class="form-group">
+           <label for="name">user name</label>		
+           <input type="text" class="form-control" id="signup_name" name="name" value="" placeholder="user name" data-parsley-required data-parsley-error-message="enter your name">	
+		 </div>
+		
+	   <div class="form-group">
+           <label for="email">Email   </label>		
+           <input type="email" class="form-control" id="signup_email" name="email" value="" placeholder="email" data-parsley-required data-parsley-error-message="enter your email">	
+		 </div>
+		
+		 <div class="form-group">
+           <label for="password">password</label>		
+           <input type="password" class="form-control" id="signup_password" value="" name="password" placeholder="password" data-parsley-required  data-parsley-error-message="enter your password">	
+		 </div>
+		 <div class="form-group">
+			     <label for="dob">dob</label>
+			     <input type="date" class="form-control" id="signup_date" value="" name="date" placeholder="DOB"  data-parsley-required data-parsley-error-message="enter your DoB">
+		 </div>
+     <div class="form-radio">
+           <label for="gender">Gender </label>
+  
+          Male: <input type="radio" name="gender" value="male" data-parsley-required data-parsley-error-message="enter your gender">
+          Fmale: <input type="radio" name="gender" value="fmale" >
+  
+     </div> <br>
+     <a role="button" class="btn btn-success" id="submit" href="/chat" value="">submit</a>
+</form>
+    </center>
+</div></div>
+</body>
+</html>
