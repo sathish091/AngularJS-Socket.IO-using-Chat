@@ -3,17 +3,17 @@
 <head>
 	    <title>login</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <script type="text/javascript" src="/js/jQuery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/parsley.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/login.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script type="text/javascript" src="/js/parsley.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 	
 </head>
-<body class="container">
+<body id="body-style">
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
 <div class="navbar-header">
@@ -21,15 +21,14 @@
 </div>
       <ul class="nav navbar-nav navbar-right">
         <li>
-            <a href="views/home.html"><span class="glyphicon glyphicon-user"></span>home</a>
+            <a href="/home"><span class="glyphicon glyphicon-user"></span>home</a>
         </li>
       </ul>
 </div>
 </nav>
+
+<div class="container"><center>
 <h1><center>log-in page</center></h1><br>
-
-<div><center>
-
 <form  class="form" action="login">
       <div class="form-group">
            <label for="email">Email   </label>    
@@ -37,9 +36,9 @@
        </div>
        <div class="form-group">
            <label for="password">password</label>    
-           <input type="text" class="form-control" id="laogin_password" name="password" value="" placeholder="password" data-parsley-required data-parsley-error-message="enter your password">  
+           <input type="password" class="form-control" id="login_password" name="password" value="" placeholder="password" data-parsley-required data-parsley-error-message="enter your password">  
        </div><br>
-    <button type="" ="button" class="btn btn-success" href="/chat" id="login">submit</button>
+    <button type="button" class="btn btn-success" href="/chat" id="login">submit</button>
 </form>
      </center>
 </div>

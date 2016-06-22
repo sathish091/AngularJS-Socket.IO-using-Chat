@@ -12,20 +12,21 @@ $(document).ready(function(){
 		 		email:user_email,
 		 		password:user_password
 		 	 };
+		 	 console.log(user_login)
 
-           $.ajax ({
-		           	url:'/login',
-		           	dataType:'json',
-		           	data:'user_login',
-		           	type:'post',
-		           	success:function(data)
-		           	{
-		           		location.href(data);
+           $.post('/login',user_login,function(data)
+           { console.log(data);
+           	if (data) 
+           	{
+           		location.href='/chat';
+
+           	}else 
+           	    {
+           		alert('invalied data');
+           	    }
 
 
-		           	}
-
-                  });
+           });
 		}
 		 else
 			{

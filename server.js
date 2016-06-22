@@ -21,7 +21,7 @@ app.use(cookieParser());
 //get the defalut page
 app.get('/',function(req,res)
 {
-	res.sendfile('views/signup.html')
+	res.sendfile('views/home.html')
 });
 //post the signup page
 app.post('/signup',function(req,res)
@@ -47,19 +47,22 @@ app.post('/signup',function(req,res)
      	     }
      });
 });
-app.get('/singup',function(req,res)
+
+app.get('/signup',function(req,res)
 {
-	res.sendfile('views/chat.html')
+	res.sendfile('views/signup.html')
 });
 //post the login page
 app.post('/login',function(req,res)
 {
      var email=req.body.email;
      var password=req.body.password;
+console.log(email);
 
 
-     db.chat.findOne({email:email,password:password},function(err,data)
+     collect.findOne({email:email,password:password},function(err,data)
           {
+            console.log(data)
 
                if (data)
                 {
@@ -74,8 +77,18 @@ app.post('/login',function(req,res)
 });
 app.get('/login',function(req,res)
      {
-          res.sendfile('views/chat.html')
+          res.sendfile('views/login.html')
      });
+
+app.get('/home',function(req,res)
+{
+    res.sendfile('views/home.html')
+
+});
+app.get('/chat',function(req,res)
+    {
+        res.sendfile('views/chat.html')
+    });
 
 
 

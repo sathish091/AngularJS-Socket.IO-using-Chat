@@ -25,7 +25,15 @@ $(document).ready(function(){
                     };
                     	console.log(user_data);
 
-              $.ajax ({
+                   $.post('/signup',user_data,function(data)
+                    {
+                        if(data)
+                        { 
+                            location.href='/chat';
+                        }
+                    });
+
+              /*$.ajax ({
                 	     url:'/signup',
                 	     dataType:"json",
                 	     type:'post',
@@ -35,7 +43,7 @@ $(document).ready(function(){
                 		    location.href(data);
                 		    console.log(data);
                 	      }
-                      });
+                      });*/
             } 
                 else{
 	                 console.log('signup page in not correct');
