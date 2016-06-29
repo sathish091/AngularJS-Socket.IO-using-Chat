@@ -57,7 +57,7 @@ app.post('/login',function(req,res)
 {
      var email=req.body.email;
      var password=req.body.password;
-console.log(email);
+ console.log(email);
 
 
      collect.findOne({email:email,password:password},function(err,data)
@@ -89,6 +89,21 @@ app.get('/chat',function(req,res)
     {
         res.sendfile('views/chat.html')
     });
+
+//socket.io connections
+
+io.sockets.on('connection', function (socket) {
+
+    console.log("data connect");   
+    socket.on('join',function(data){
+      console.log(data);
+       });
+    socket.on('message',function(data){
+      console.log(data);
+      socket.emit('chat',data);
+      socket.broadcast.emit('chat',data);
+    });
+ });
 
 
 
