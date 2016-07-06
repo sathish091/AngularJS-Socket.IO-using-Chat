@@ -12,11 +12,11 @@ $(document).ready(function(){
 
 			$.post('/login',user_login,function(data){ 
 				console.log(data);
-				if(data) {
+				if(data===true) {
 					location.href='/chat';
 				}
 				else {
-           	    	alert('invalied data');
+           	    	alert('Invalied Email-Id');
            	    	console.log('error the data');
            	    }
 			});

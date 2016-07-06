@@ -1,23 +1,25 @@
 /*signup.html and login.html*/
-#body-style
-{
-		background-color: rgba(38, 70, 76, 0.81);
-	}
-
-	.form{
-
-		width: 340px;
+#body-style{
+    background-color: rgba(38, 70, 76, 0.81);
+}
+.container{
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.form{
+    width: 340px;
     margin: auto;
     border: 1px solid #00FF8E;
 	padding-top: 10px;
     padding-right: 9px;
     padding-bottom: 5px;
     padding-left: 12px;
-
-	}
-	.form-control{
-		text-align: center;
-	}
+}
+.form-control{
+	text-align: center;
+}
 	
 /*parsley css for validation for login and signup*/
 input.parsley-success,
@@ -42,24 +44,12 @@ form.parsley-error {
     color: #d16e6c;
     margin-top: 5px;
     margin-bottom: 0;
-  padding-left: 0;
+    padding-left: 0;
 }
 
 .parsley-errors-list.filled {
     opacity: 1;
 }
 
-/* chat html file 
-#send{
-    position: relative;
-    bottom: -437px;
-    left: 580px;
-
-}
-#chat{
-    position: relative;
-    bottom: -486px;
-   
-
-}*/
+/* chat html file */
 
