@@ -7,6 +7,7 @@ var server = http.createServer(app);
 var io=require('socket.io').listen(server);
 var bodyParser=require('body-parser');
 var cookieParser=require('cookie-parser');
+var fs=require('fs');
 
 //mongodb connection
 //var mongojs= require('mongojs');
@@ -116,39 +117,63 @@ app.get('/myinfo',function(req,res){
 })
 
 //socket.io connections
-var users={};
-io.sockets.on('connection', function (socket){
-  console.log("data connect");
+var usernames = {};
+io.sockets.on('connection', function (socket) {
 
-  socket.on('join',function(data){
-    console.log(data);
+  socket.on('sendchat', function (data) {
+   
+    io.sockets.emit('updatechat', socket.username, data);
+    console.log("uaa:",socket.username);
+    console.log("sss:",data);
   });
 
-  // receive and send the message and user_name
-  socket.on('message',function(on_user,chat_box){
-    console.log('username & msg:',on_user,chat_box);
-    console.log('userdata:',on_user);
-
-    // users variable adding the username & socket.id in sigle object 
-     users={Online_user:on_user,socket_id:socket.id};
-    console.log('udsd:',users);
-    // users=[{socket_id:socket.id,Online_user:on_user}];
-
-    // emit the user data & message
-    socket.emit('display',users,chat_box);
-    socket.broadcast.emit('display',users,chat_box);
+  
+  socket.on('adduser', function(username){
+    
+    socket.username = username;
+    
+    usernames[username] = socket.id;
+    console.log("bba:",usernames);
+    
+    socket.emit('updatechat', username, 'you have connected');
+    
+    socket.emit('store_username', username);
+    
+    socket.broadcast.emit('updatechat',  username ,' has connected ', socket.id);
+  
+    io.sockets.emit('updateusers', usernames);
   });
 
-  // socket disconnect
-  socket.on('disconnect',function(data){
-    delete users;
-    console.log('socket disconnect:',data);
+  socket.on('disconnect', function(){
+    delete usernames[socket.username];
+    io.sockets.emit('updateusers', usernames);
+    socket.broadcast.emit('updatechat', socket.username ,'has disconnected');
+  });
+  socket.on('check_user',function(asked,id){
+    io.sockets.socket(usernames[asked]).emit('msg_user',check_key(id));
+  });
+
+  function check_key(id){
+    var val="";
+    for(var key in val){
+      if(usernames[key]==val)
+        val=key;
+    }
+    return val;
+  }
+  socket.on('msg_others',function(usr,username,msg){
+    io.sockets.socket(usernames[usr]).emit('msg_handler',username,msg);
+    fs.writeFile("views/chat.html", msg, function(err) {
+      if(err) {
+      console.log(err);
+      } 
+      });
 
   });
+  
+  
+
 });
-
-
-
 
 server.listen('8000');
 console.log('server is runing:8000');

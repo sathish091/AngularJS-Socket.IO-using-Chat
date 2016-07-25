@@ -43,18 +43,3 @@ $(document).ready(function(){
                     }
     });
 });
-
-/*
-var app =angular.module("app",[]);
-console.log(signup)
-app.controller("ctrl",function($scope)
-
-    {
-        $scope.post('/signup',function());
-       $scope.signup=function(){
-        location.href='/signup';
-       }
-    });
-
-  
-*/

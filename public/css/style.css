@@ -1,6 +1,9 @@
 /*signup.html and login.html*/
 #body-style{
-    background-color: rgba(38, 70, 76, 0.81);
+    /*background-color: rgba(38, 70, 76, 0.81);*/
+    background-image: url(/images/33.jpg);
+    background-size: cover;
+    background-repeat: no-repeat, repeat;
 }
 .container{
     padding-right: 0px;
