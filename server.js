@@ -13,8 +13,8 @@ var fs=require('fs');
 //var mongojs= require('mongojs');
 // var db = mongojs("sathish",["chat"]);
 var mongo=require('mongojs');
-var db=mongo('sathish');
-var collect = db.collection('chat');
+var db=mongo('app');
+var collect = db.collection('onuser');
 app.use(session({secret:'secrettoken'}));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'));
@@ -149,30 +149,6 @@ io.sockets.on('connection', function (socket) {
     io.sockets.emit('updateusers', usernames);
     socket.broadcast.emit('updatechat', socket.username ,'has disconnected');
   });
-  socket.on('check_user',function(asked,id){
-    io.sockets.socket(usernames[asked]).emit('msg_user',check_key(id));
-  });
-
-  function check_key(id){
-    var val="";
-    for(var key in val){
-      if(usernames[key]==val)
-        val=key;
-    }
-    return val;
-  }
-  socket.on('msg_others',function(usr,username,msg){
-    io.sockets.socket(usernames[usr]).emit('msg_handler',username,msg);
-    fs.writeFile("views/chat.html", msg, function(err) {
-      if(err) {
-      console.log(err);
-      } 
-      });
-
-  });
-  
-  
-
 });
 
 server.listen('8000');

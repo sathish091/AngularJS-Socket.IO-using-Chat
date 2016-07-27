@@ -1,45 +1,25 @@
-$(document).ready(function(){
-    $('#submit').click(function(){
-     if ($('.form').parsley().validate()){
-            	var user_name=$('#signup_name').val();
-            	console.log(user_name);
-            	var user_email=$('#signup_email').val();
-            	var user_password=$('#signup_password').val();
-                var user_date=$('#signup_date').val();
-                var user_gender=$("input[name='gender']:checked"). val();
-                if(user_gender){
-                    true;
-                } console.log(user_gender);
-                var user_data={
-                    name:user_name,
-                    email:user_email,
-                    password:user_password,
-                    date:user_date,
-                    gender:user_gender 
-                };console.log(user_data);
-                $.post('/signup',user_data,function(data){
-                    if(data===true){ 
-                        location.href='/chat';
-                    }else{
-                        alert('already used to UserName and Email-Id');
-                        console.log('error the data')
-                    }
-                });
+var signup=angular.module("sign",[]);
+signup.controller('control',function($scope,$http,$window){
+    $scope.submit=function(){
+        var sign={
+            name:$scope.name,
+            email:$scope.email,
+            password:$scope.password,
+            date:$scope.date,
+            gender:$scope.gender
+        }
+        console.log("signdata:",sign);
+        $http.post('/signup',sign).success(function(data){
+            if (data===true) {
+                console.log("true:",data);
+                $window.location='/chat';
+            }else{
+                console.log("false:",data);
+            }
+        })
+        .error(function(data){
+            console.log("errordta",data);
+        })
+    }
 
-              /*$.ajax ({
-                	     url:'/signup',
-                	     dataType:"json",
-                	     type:'post',
-                	     data:user_data,
-                	     success:function(data)
-                	      {
-                		    location.href(data);
-                		    console.log(data);
-                	      }
-                      });*/
-            } 
-                else{
-	                 console.log('signup page in not correct');
-                    }
-    });
-});
+})

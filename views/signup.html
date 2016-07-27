@@ -4,15 +4,13 @@
 	<title>signup</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/parsley.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="/js/signup.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"> 
 </head>
-<body id="body-style">
+<body id="body-style" ng-app="sign" ng-controller="control">
 <nav class="navbar navbar-inverse">
 <div class="container-fluid">
 <div class="navbar-header">
@@ -32,30 +30,30 @@
 <form  class="form" action="signup">
 		 <div class="form-group">
            <label for="name">user name</label>		
-           <input type="text" class="form-control" id="signup_name" name="name" value="" placeholder="user name" data-parsley-required data-parsley-error-message="enter your name">	
+           <input type="text" class="form-control" ng-model="name" id="signup_name" name="name" value="" placeholder="user name" required="" >	
 		 </div>
 		
 	   <div class="form-group">
            <label for="email">Email   </label>		
-           <input type="email" class="form-control" id="signup_email" name="email" value="" placeholder="email" data-parsley-required data-parsley-error-message="enter your email">	
+           <input type="email" class="form-control" ng-model="email" id="signup_email" name="email" value="" placeholder="email" required="">	
 		 </div>
 		
 		 <div class="form-group">
            <label for="password">password</label>		
-           <input type="password" class="form-control" id="signup_password" value="" name="password" placeholder="password" data-parsley-required  data-parsley-error-message="enter your password">	
+           <input type="password" class="form-control" ng-model="password" id="signup_password" value="" name="password" placeholder="password" required="" >	
 		 </div>
 		 <div class="form-group">
 			     <label for="dob">dob</label>
-			     <input type="date" class="form-control" id="signup_date" value="" name="date" placeholder="DOB"  data-parsley-required data-parsley-error-message="enter your DoB">
+			     <input type="date" class="form-control" ng-model="date" id="signup_date" value="" name="date" placeholder="DOB" required="">
 		 </div>
      <div class="form-radio">
            <label for="gender">Gender </label>
   
-          Male: <input type="radio" name="gender" value="male" data-parsley-required data-parsley-error-message="enter your gender">
-          Fmale: <input type="radio" name="gender" value="fmale" >
+          Male: <input type="radio" ng-model="gender" name="gender" value="male" required="" >
+          Fmale: <input type="radio" ng-model="gender" name="gender" value="fmale" >
   
      </div> <br>
-     <button type="button" class="btn btn-success" id="submit" value="">submit</button>
+     <button type="button" class="btn btn-success" ng-click="submit()" value="">submit</button>
 </form>
     </center>
 </div></div>
