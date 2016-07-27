@@ -4,11 +4,11 @@
 	<title>signup</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="/js/angular.min.js"></script>
     <script src="/js/signup.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"> 
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"> 
 </head>
 <body id="body-style" ng-app="sign" ng-controller="control">
 <nav class="navbar navbar-inverse">
@@ -27,30 +27,35 @@
 <div class="container">
 <h1><center>signup page</center></h1><br>
 <div><center>
-<form  class="form" action="signup">
-		 <div class="form-group">
+<form  class="form" action="signup" name="userForm">
+		 <div class="form-group" ng-class="{'has-error': userForm.name.$invalid}">
            <label for="name">user name</label>		
-           <input type="text" class="form-control" ng-model="name" id="signup_name" name="name" value="" placeholder="user name" required="" >	
+           <input type="text" class="form-control" ng-model="name" name="name" value="" placeholder="user name" required="" >	
+           <p ng-show="userForm.name.$invalid" class="help-block">Enter the name</p>
 		 </div>
 		
-	   <div class="form-group">
-           <label for="email">Email   </label>		
-           <input type="email" class="form-control" ng-model="email" id="signup_email" name="email" value="" placeholder="email" required="">	
+	   <div class="form-group" ng-class="{'has-error': userForm.email.$invalid}">
+           <label for="email">Email </label>		
+           <input type="email" class="form-control" ng-model="email" name="email" value="" placeholder="email" required="">	
+           <p ng-show="userForm.email.$invalid" class="help-block">Enter the email</p>
 		 </div>
 		
-		 <div class="form-group">
+		 <div class="form-group" ng-class="{'has-error': userForm.password.$invalid}">
            <label for="password">password</label>		
-           <input type="password" class="form-control" ng-model="password" id="signup_password" value="" name="password" placeholder="password" required="" >	
+           <input type="password" class="form-control" ng-model="password" value="" name="password" placeholder="password" required="">
+           <p ng-show="userForm.password.$invalid" class="help-block">Enter the password</p>	
 		 </div>
-		 <div class="form-group">
+		 <div class="form-group" ng-class="{'has-error': userForm.date.$invalid}">
 			     <label for="dob">dob</label>
-			     <input type="date" class="form-control" ng-model="date" id="signup_date" value="" name="date" placeholder="DOB" required="">
+			     <input type="date" class="form-control" ng-model="date" value="" name="date" placeholder="DOB" required="">
+           <p ng-show="userForm.date.$invalid" class="help-block">Enter the date</p>
 		 </div>
-     <div class="form-radio">
-           <label for="gender">Gender </label>
+     <div class="form-radio" ng-class="{'has-error': userForm.gender.$invalid}">
+           <label for="gender">Gender: </label>
   
           Male: <input type="radio" ng-model="gender" name="gender" value="male" required="" >
-          Fmale: <input type="radio" ng-model="gender" name="gender" value="fmale" >
+        Fmale: <input type="radio" ng-model="gender" name="gender" value="fmale" required="" >
+        <p ng-show="userForm.gender.$invalid" class="help-block">Enter the gender</p>
   
      </div> <br>
      <button type="button" class="btn btn-success" ng-click="submit()" value="">submit</button>

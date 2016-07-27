@@ -11,7 +11,7 @@ var fs=require('fs');
 
 //mongodb connection
 //var mongojs= require('mongojs');
-// var db = mongojs("sathish",["chat"]);
+// var db = mongojs("app",["onuser"]);
 var mongo=require('mongojs');
 var db=mongo('app');
 var collect = db.collection('onuser');
@@ -37,7 +37,7 @@ app.post('/signup',function(req,res){
      // save the data for mongodb
   collect.findOne({name:name},{email:email},function(err,data){
     console.log(data);
-    if(data){
+    if(!data){
       res.send(false);
     }
     else{

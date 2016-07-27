@@ -1,7 +1,8 @@
 /*signup.html and login.html*/
+
 #body-style{
     /*background-color: rgba(38, 70, 76, 0.81);*/
-    background-image: url(/images/33.jpg);
+    background-image: url(/images/6.jpg);
     background-size: cover;
     background-repeat: no-repeat, repeat;
 }
@@ -11,13 +12,14 @@
     margin-right: auto;
     margin-left: auto;
 }
+
 .form{
-    width: 340px;
+    width: 312px;
     margin: auto;
     border: 1px solid #00FF8E;
-	padding-top: 10px;
+    padding-top: 1px;
     padding-right: 9px;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
     padding-left: 12px;
 }
 .form-control{

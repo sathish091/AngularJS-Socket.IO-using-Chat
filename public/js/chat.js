@@ -27,7 +27,7 @@ chat.controller('controller',function($scope,$http){
  				console.log('online:',v);
  				if (v == data.name) {
  					console.log("update",v);
- 				} 
+ 				}  
  				else {
  					online.push({username:v})
  				}
