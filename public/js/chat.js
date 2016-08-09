@@ -17,8 +17,10 @@ chat.controller('controller',function($scope,$http){
         }
         socket.on('updatechat', function (username, data) {
         	console.log("dsadjhvsh:",username,data);
+            $scope.$apply(function () {
  		    $scope.username=username;
  			$scope.message=data;
+        });
  		});
  		socket.on("updateusers", function (data) {
  			console.log(data);
@@ -29,12 +31,12 @@ chat.controller('controller',function($scope,$http){
  					console.log("update",v);
  				}  
  				else {
- 					online.push({username:v})
+ 					online.push({username:v});
  				}
  			});
  			$scope.$apply(function () {
  				$scope.onlineuser = online;
- 				console.log(online)
+ 				console.log('gfjh:',$scope.onlineuser)
  			});
  		});
     });

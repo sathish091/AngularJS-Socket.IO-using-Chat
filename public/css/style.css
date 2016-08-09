@@ -1,10 +1,10 @@
-/*signup.html and login.html*/
 
 #body-style{
-    /*background-color: rgba(38, 70, 76, 0.81);*/
-    background-image: url(/images/6.jpg);
+     width: 100%;
+    background-size: 100% 100%;
     background-size: cover;
-    background-repeat: no-repeat, repeat;
+    background-repeat: no-repeat;
+    background-image: url(/images/6.jpg)
 }
 .container{
     padding-right: 0px;
@@ -25,7 +25,6 @@
 .form-control{
 	text-align: center;
 }
-	
 /*parsley css for validation for login and signup*/
 input.parsley-success,
 form.parsley-success {
@@ -56,5 +55,6 @@ form.parsley-error {
     opacity: 1;
 }
 
-/* chat html file */
+
+
 

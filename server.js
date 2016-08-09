@@ -7,7 +7,7 @@ var server = http.createServer(app);
 var io=require('socket.io').listen(server);
 var bodyParser=require('body-parser');
 var cookieParser=require('cookie-parser');
-var fs=require('fs');
+
 
 //mongodb connection
 //var mongojs= require('mongojs');
@@ -37,7 +37,7 @@ app.post('/signup',function(req,res){
      // save the data for mongodb
   collect.findOne({name:name},{email:email},function(err,data){
     console.log(data);
-    if(!data){
+    if(data){
       res.send(false);
     }
     else{
@@ -80,7 +80,7 @@ app.post('/login',function(req,res){
 app.get('/login',function(req,res){
   
     res.sendfile('views/login.html');
-});
+});  
 
 app.get('/home',function(req,res){
   if (req.session.username) {
@@ -126,8 +126,6 @@ io.sockets.on('connection', function (socket) {
     console.log("uaa:",socket.username);
     console.log("sss:",data);
   });
-
-  
   socket.on('adduser', function(username){
     
     socket.username = username;
@@ -136,11 +134,7 @@ io.sockets.on('connection', function (socket) {
     console.log("bba:",usernames);
     
     socket.emit('updatechat', username, 'you have connected');
-    
-    socket.emit('store_username', username);
-    
     socket.broadcast.emit('updatechat',  username ,' has connected ', socket.id);
-  
     io.sockets.emit('updateusers', usernames);
   });
 
@@ -148,6 +142,7 @@ io.sockets.on('connection', function (socket) {
     delete usernames[socket.username];
     io.sockets.emit('updateusers', usernames);
     socket.broadcast.emit('updatechat', socket.username ,'has disconnected');
+    console.log('disconnect',socket.username);
   });
 });
 
